@@ -53,11 +53,11 @@ local function OpenCityhallIdentityMenu(closestCityhall)
     for item, id in pairsInOrder(availableLicenses) do
         identityOptions[#identityOptions + 1] = {
             title = id.label,
-            description = ('Price: $%s'):format(id.cost),
+            description = ('Pris: $%s'):format(id.cost),
             onSelect = function()
                 TriggerServerEvent('qb-cityhall:server:requestId', item, closestCityhall)
                 if not Config.UseTarget and inRangeCityhall then
-                    lib.showTextUI('[E] Open Cityhall')
+                    lib.showTextUI('[E] Åpne Byhall')
                 end
             end
         }
@@ -68,7 +68,7 @@ local function OpenCityhallIdentityMenu(closestCityhall)
         menu = 'cityhall_menu',
         onExit = function()
             if not Config.UseTarget and inRangeCityhall then
-                lib.showTextUI('[E] Open Cityhall')
+                lib.showTextUI('[E] Åpne Byhall')
             end
         end,
         options = identityOptions
@@ -85,7 +85,7 @@ local function OpenCityhallEmploymentMenu(closestCityhall)
                 onSelect = function()
                     TriggerServerEvent('qb-cityhall:server:ApplyJob', job)
                     if not Config.UseTarget and inRangeCityhall then
-                        lib.showTextUI('[E] Open Cityhall')
+                        lib.showTextUI('[E] Åpne Byhall')
                     end
                 end
             }
@@ -96,7 +96,7 @@ local function OpenCityhallEmploymentMenu(closestCityhall)
             menu = 'cityhall_menu',
             onExit = function()
                 if not Config.UseTarget and inRangeCityhall then
-                    lib.showTextUI('[E] Open Cityhall')
+                    lib.showTextUI('[E] Åpne Byhall')
                 end
             end,
             options = jobOptions
@@ -112,7 +112,7 @@ local function OpenCityhallMenu()
         title = 'City Hall',
         onExit = function()
             if not Config.UseTarget and inRangeCityhall then
-                lib.showTextUI('[E] Open Cityhall')
+                lib.showTextUI('[E] Åpne Byhall')
             end
         end,
         options = {
@@ -214,7 +214,7 @@ local function spawnPeds()
                 exports.ox_target:addLocalEntity(ped, { {
                     name = 'take_driving_test' .. i,
                     icon = 'fa-solid fa-car-side',
-                    label = 'Take Driving Lessons',
+                    label = 'Ta kjøretimer',
                     distance = 1.5,
                     onSelect = function()
                         TriggerServerEvent('qb-cityhall:server:sendDriverTest')
@@ -224,7 +224,7 @@ local function spawnPeds()
                 exports.ox_target:addLocalEntity(ped, { {
                     name = 'open_cityhall' .. i,
                     icon = 'fa-solid fa-city',
-                    label = 'Open Cityhall',
+                    label = 'Åpne Byhall',
                     distance = 1.5,
                     debug = true,
                     onSelect = function()
@@ -253,7 +253,7 @@ local function spawnPeds()
                             end)
                         elseif current.cityhall and zone.name == 'cityhall' then
                             inRangeCityhall = true
-                            lib.showTextUI('[E] Open Cityhall')
+                            lib.showTextUI('[E] Åpne Byhall')
                             CreateThread(function()
                                 while inRangeCityhall do
                                     Wait(0)
