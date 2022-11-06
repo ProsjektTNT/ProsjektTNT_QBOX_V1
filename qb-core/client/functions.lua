@@ -132,8 +132,11 @@ function QBCore.Functions.TriggerCallback(name, cb, ...)
     TriggerServerEvent('QBCore:Server:TriggerCallback', name, ...)
 end
 
+-- QBCore.Functions.Notify = function(notifyText, notifyType, notifyDuration)
+--    exports['tnt_notify']:Alert("Prosjekt TNT", notifyText, notifyDuration or 8000, notifyType or 'info')
+-- end
 QBCore.Functions.Notify = function(notifyText, notifyType, notifyDuration)
-    exports['okokNotify']:Alert("TRP", notifyText, notifyDuration or 8000, notifyType or 'info')
+    exports['tnt_notify']:Alert("Prosjekt TNT", notifyText, notifyDuration or 8000, notifyType or 'info')
 end
 
 function QBCore.Functions.Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel)

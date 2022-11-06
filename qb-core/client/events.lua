@@ -168,11 +168,16 @@ RegisterNetEvent('QBCore:Player:UpdatePlayerData', function()
     TriggerServerEvent('QBCore:UpdatePlayer')
 end)
 
+-- Backup av Notify Funksjon
+
+-- QBCore.Functions.Notify = function(notifyText, notifyType, notifyDuration)
+--    exports['tnt_notify']:Alert("Prosjekt TNT", notifyText, notifyDuration or 8000, notifyType or 'info')
+-- end
 QBCore.Functions.Notify = function(notifyText, notifyType, notifyDuration)
-    exports['okokNotify']:Alert("TRP", notifyText, notifyDuration or 8000, notifyType or 'info')
+    exports['tnt_notify']:Alert("Prosjekt TNT", notifyText, notifyDuration or 8000, notifyType or 'info')
 end
 
--- This event is exploitable and should not be used. It has been deprecated, and will be removed soon.
+-- eventet er exploitable og deprecated, blir fjernet snart
 RegisterNetEvent('QBCore:Client:UseItem', function(item)
     QBCore.Debug(string.format("%s triggered QBCore:Client:UseItem by ID %s with the following data. This event is deprecated due to exploitation, and will be removed soon. Check qb-inventory for the right use on this event.", GetInvokingResource(), GetPlayerServerId(PlayerId())))
     QBCore.Debug(item)
